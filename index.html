@@ -1,0 +1,397 @@
+"use client";
+import { useState } from "react";
+import { 
+  Menu, 
+  X, 
+  Home, 
+  Droplets, 
+  Mountain, 
+  Users, 
+  BookOpen, 
+  ChevronRight,
+  Play,
+  ArrowRight
+} from "lucide-react";
+
+export default function WaterConservationSite() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="sticky top-0 z-50 bg-white shadow-sm">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <div className="flex items-center space-x-2">
+              <div className="bg-blue-100 p-2 rounded-lg">
+                <Droplets className="h-6 w-6 text-blue-600" />
+              </div>
+              <div>
+                <h1 className="font-bold text-xl text-blue-800">Água Viva</h1>
+                <p className="text-xs text-blue-600">Preservação Hídrica</p>
+              </div>
+            </div>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center space-xTc8">
+              <a href="#" className="text-blue-800 hover:text-blue-600 font-medium">Início</a>
+              <a href="#problem" className="text-blue-800 hover:text-blue-600 font-medium">O Problema</a>
+              <a href="#solutions" className="text-blue-800 hover:text-blue-600 font-medium">Soluções</a>
+              <a href="#class-project" className="text-blue-800 hover:text-blue-600 font-medium">Nosso Projeto</a>
+              <a href="#action" className="text-blue-800 hover:text-blue-600 font-medium">Tome Ação</a>
+            </nav>
+
+            {/* Main site link */}
+            <div className="hidden md:block">
+              <a 
+                href="#" 
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition flex items-center"
+              >
+                <Home className="mr-2 h-4 w-4" />
+                Site Principal
+              </a>
+            </div>
+
+            {/* Mobile menu button */}
+            <button 
+              className="md:hidden text-blue-800"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+
+          {/* Mobile Navigation */}
+          {isMenuOpen && (
+            <div className="md:hidden mt-4 py-4 border-t border-blue-100">
+              <div className="flex flex-col space-y-3">
+                <a href="#" className="text-blue-800 hover:text-blue-600 font-medium">Início</a>
+                <a href="#problem" className="text-blue-800 hover:text-blue-600 font-medium">O Problema</a>
+                <a href="#solutions" className="text-blue-800 hover:text-blue-600 font-medium">Soluções</a>
+                <a href="#class-project" className="text-blue-800 hover:text-blue-600 font-medium">Nosso Projeto</a>
+                <a href="#action" className="text-blue-800 hover:text-blue-600 font-medium">Tome Ação</a>
+                <a 
+                  href="#" 
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition flex items-center justify-center mt-2"
+                >
+                  <Home className="mr-2 h-4 w-4" />
+                  Site Principal
+                </a>
+              </div>
+            </div>
+          )}
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative py-16 md:py-24 bg-gradient-to-b from-blue-50 to-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">
+              Redução de Água Doce no Mundo e a Preservação das Geleiras
+            </h1>
+            <p className="text-xl text-blue-700 mb-8">
+              Conscientização sobre um dos maiores desafios ambientais do nosso tempo
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <a 
+                href="#class-project" 
+                className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition flex items-center justify-center"
+              >
+                <Play className="mr-2 h-5 w-5" />
+                Conheça Nosso Projeto
+              </a>
+              <a 
+                href="#action" 
+                className="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition flex items-center justify-center"
+              >
+                Participe Desta Causa
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Problem Section */}
+      <section id="problem" className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-blue-900 mb-4">A Crise da Água Doce</h2>
+            <p className="text-lg text-blue-700 max-w-3xl mx-auto">
+              Entenda a gravidade da situação e como a redução das geleiras afeta o planeta
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="text-2xl font-semibold text-blue-800 mb-4">Dados Alarmantes</h3>
+              <ul className="space-y-4 text-blue-900">
+                <li className="flex items-start">
+                  <div className="bg-blue-100 p-2 rounded-full mr-3 mt-1">
+                    <Droplets className="h-5 w-5 text-blue-600" />
+                  </div>
+                  <span>Apenas 2,5% da água do planeta é doce, e menos de 1% está acessível para consumo humano</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="bg-blue-100 p-2 rounded-full mr-3 mt-1">
+                    <Mountain className="h-5 w-5 text-blue-600" />
+                  </div>
+                  <span>As geleiras do mundo estão recuando a uma taxa sem precedentes devido ao aquecimento global</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="bg-blue-100 p-2 rounded-full mr-3 mt-1">
+                    <Users className="h-5 w-5 text-blue-600" />
+                  </div>
+                  <span>Mais de 2 bilhões de pessoas vivem em países com estresse hídrico elevado</span>
+                </li>
+              </ul>
+            </div>
+            <div className="bg-blue-50 p-6 rounded-lg">
+              <img 
+                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9d885d4f-88ba-4613-9eb6-7967d987af6c.png" 
+                alt="Comparativo visual mostrando a redução dramática de uma geleira ao longo de décadas devido às mudanças climáticas" 
+                className="rounded-lg w-full"
+              />
+              <p className="text-sm text-center text-blue-600 mt-2">
+                Redução da geleira Aletsch nos Alpes suíços entre 1920 e 2020
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Impact Infographic */}
+      <section className="py-16 bg-blue-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-blue-900 text-center mb-12">Impactos da Redução das Geleiras</h2>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Droplets className="h-8 w-8 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-blue-800 mb-3">Escassez de Água</h3>
+              <p className="text-blue-700">
+                Geleiras são reservatórios naturais que alimentam rios durante períodos secos. Sua redução ameaça o abastecimento de milhões.
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Mountain className="h-8 w-8 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-blue-800 mb-3">Elevação do Nível do Mar</h3>
+              <p className="text-blue-700">
+                O derretimento das geleiras contribui significativamente para a elevação do nível dos oceanos, ameaçando comunidades costeiras.
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BookOpen className="h-8 w-8 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-blue-800 mb-3">Perda de Ecossistemas</h3>
+              <p className="text-blue-700">
+                Espécies adaptadas a ambientes glaciais enfrentam extinção, e ecossistemas únicos estão desaparecendo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Class Project Section */}
+      <section id="class-project" className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-blue-900 mb-4">Projeto da Turma 9ºB</h2>
+            <p className="text-lg text-blue-700 max-w-3xl mx-auto">
+              Conheça nossa iniciativa de conscientização sobre a preservação da água doce
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="text-2xl font-semibold text-blue-800 mb-4">"Guardiões das Águas"</h3>
+              <p className="text-blue-900 mb-4">
+                Nosso projeto tem como objetivo conscientizar a comunidade escolar e local sobre a importância da 
+                preservação da água doce e das geleiras, destacando a conexão entre nossas ações cotidianas e 
+                esses ecossistemas cruciais.
+              </p>
+              <p className="text-blue-900 mb-6">
+                Desenvolvemos atividades educativas, campanhas de redução de consumo de água na escola e 
+                um sistema de coleta de água da chuva para irrigação da horta comunitária.
+              </p>
+              
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-blue-800 mb-2">Visite nossa sala durante o evento:</h4>
+                <p className="text-blue-700">Sala 12, Bloco B - Das 14h às 17h</p>
+                <p className="text-blue-700">Terça-feira, 15 de Outubro</p>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <img 
+                  src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c0115f63-18a2-4851-8636-1149a4e8d0b0.png" 
+                  alt="Estudantes apresentando maquete de sistema de captação de água pluvial com materiais reciclados" 
+                  className="rounded-md w-full mb-3"
+                />
+                <p className="text-sm text-blue-700">Maquete do sistema de captação de água da chuva</p>
+              </div>
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <img 
+                  src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9cce2793-f677-4653-ba3d-4ef7fe3e038f.png" 
+                  alt="Alunos mediram o consumo de água na escola e criaram gráficos mostrando a redução após implementação de medidas de economia" 
+                  className="rounded-md w-full mb-3"
+                />
+                <p className="text-sm text-blue-700">Gráficos de redução do consumo de água</p>
+              </div>
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <img 
+                  src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0ea2c25f-81a1-488f-896c-ac6863b55cb7.png" 
+                  alt="Cartazes educativos criados pelos alunos sobre a importância da preservação das geleiras e da água doce" 
+                  className="rounded-md w-full mb-3"
+                />
+                <p className="text-sm text-blue-700">Materiais educativos produzidos</p>
+              </div>
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <img 
+                  src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e5382f79-e376-49ea-9a2a-0184231e91ab.png" 
+                  alt="Horta comunitária da escola sendo irrigada com água coletada da chuva, demonstrando prática sustentável" 
+                  className="rounded-md w-full mb-3"
+                />
+                <p className="text-sm text-blue-700">Horta comunitária com água reutilizada</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Solutions Section */}
+      <section id="solutions" className="py-16 bg-blue-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-blue-900 mb-4">Como Podemos Agir</h2>
+            <p className="text-lg text-blue-700 max-w-3xl mx-auto">
+              Pequenas ações fazem grande diferença na preservação da água doce
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
+              <h3 className="text-xl font-semibold text-blue-800 mb-3 flex items-center">
+                <div className="bg-blue-100 p-2 rounded-full mr-3">
+                  <Droplets className="h-5 w-5 text-blue-600" />
+                </div>
+                Redução do Consumo Doméstico
+              </h3>
+              <ul className="list-disc list-inside text-blue-900 ml-10 space-y-2">
+                <li>Tomar banhos mais curtos</li>
+                <li>Consertar vazamentos</li>
+                <li>Reutilizar água sempre que possível</li>
+                <li>Instalar redutores de vazão em torneiras</li>
+              </ul>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
+              <h3 className="text-xl font-semibold text-blue-800 mb-3 flex items-center">
+                <div className="bg-blue-100 p-2 rounded-full mr-3">
+                  <Mountain className="h-5 w-5 text-blue-600" />
+                </div>
+                Apoio à Preservação das Geleiras
+              </h3>
+              <ul className="list-disc list-inside text-blue-900 ml-10 space-y-2">
+                <li>Reduzir a pegada de carbono</li>
+                <li>Apoiar organizações de conservação ambiental</li>
+                <li>Conscientizar outras pessoas sobre o problema</li>
+                <li>Escolher produtos de empresas com práticas sustentáveis</li>
+              </ul>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <h3 className="text-xl font-semibold text-blue-800 mb-3 flex items-center">
+                <div className="bg-blue-100 p-2 rounded-full mr-3">
+                  <Users className="h-5 w-5 text-blue-600" />
+                </div>
+                Ação Coletiva
+              </h3>
+              <ul className="list-disc list-inside text-blue-900 ml-10 space-y-2">
+                <li>Participar de mutirões de limpeza de rios e lagos</li>
+                <li>Cobrar políticas públicas para proteção hídrica</li>
+                <li>Implementar sistemas de captação de água da chuva em comunidades</li>
+                <li>Promover educação ambiental nas escolas</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section id="action" className="py-16 bg-blue-600 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-6">Junte-se a Nossa Causa</h2>
+          <p className="text-xl mb-8 max-w-3xl mx-auto">
+            A preservação da água doce é responsabilidade de todos. Sua ação faz a diferença!
+          </p>
+          
+          <div className="max-w-2xl mx-auto bg-blue-700 p-6 rounded-lg">
+            <h3 className="text-xl font-semibold mb-4">Participe do Nosso Evento</h3>
+            <p className="mb-6">
+              Venha conhecer nosso projeto e aprender mais sobre como podemos, juntos, proteger 
+              nossas fontes de água doce e geleiras.
+            </p>
+            
+            <div className="mb-6">
+              <p className="font-semibold">Data: 20 de Setembro de 2025</p>
+              <p className="font-semibold">Horário: 14h às 17h</p>
+              <p className="font-semibold">Local: Colégio Paulo de Tarso - Sala 21</p>
+            </div>
+            
+            <a 
+              href="#" 
+              className="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition inline-block"
+            >
+              Confirmar Presença
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-blue-900 text-white py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Água Viva</h3>
+              <p className="text-blue-200">
+                Projeto de conscientização sobre a preservação da água doce e geleiras.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Desenvolvido por</h3>
+              <ul className="space-y-2 text-blue-200">
+                <li>Turma 3º EM - Colégio Paulo de Tarso</li>
+                <li>Orientadores: Prof. Felipe Ishara e  </li>
+                <li>Design: André Soares, Pedro Musto, Julio Alonso e Gustavo Miranda</li>
+                <li>Conteúdo: Todos os alunos do 3º Ensino Médio</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Contato</h3>
+              <p className="text-blue-200 mb-2">atendimento@colegiopaulodetarso.com.br</p>
+              <p className="text-blue-200">(11) 3456-7890</p>
+            </div>
+          </div>
+          
+          <div className="border-t border-blue-800 mt-8 pt-8 text-center text-blue-300">
+            <p>© 2025 Expo-PT 3º Ensino Médio - Todos os direitos reservados</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
