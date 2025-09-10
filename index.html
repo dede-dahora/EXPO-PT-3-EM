@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Água Viva - Preservação Hídrica</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Caixa de confirmação -->
+    <div id="confirmation-box" class="confirmation-box">
+        <i class="fas fa-check-circle"></i>
+        <span id="confirmation-message">Presença confirmada com sucesso!</span>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -27,6 +33,7 @@
                     <a href="#problem">O Problema</a>
                     <a href="#solutions">Soluções</a>
                     <a href="#class-project">Nosso Projeto</a>
+                    <a href="#quiz">Teste Seu Conhecimento</a>
                     <a href="#action">Tome Ação</a>
                 </nav>
 
@@ -45,6 +52,7 @@
                 <a href="#problem">O Problema</a>
                 <a href="#solutions">Soluções</a>
                 <a href="#class-project">Nosso Projeto</a>
+                <a href="#quiz">Teste Seu Conhecimento</a>
                 <a href="#action">Tome Ação</a>
                 <a href="#" class="main-site-link">
                     <i class="fas fa-home"></i>
@@ -64,6 +72,10 @@
                     <a href="#class-project" class="btn btn-primary">
                         <i class="fas fa-play"></i>
                         Conheça Nosso Projeto
+                    </a>
+                    <a href="#quiz" class="btn btn-secondary">
+                        <i class="fas fa-brain"></i>
+                        Teste Seu Conhecimento
                     </a>
                     <a href="#action" class="btn btn-outline">
                         Participe Desta Causa
@@ -107,7 +119,7 @@
                     </ul>
                 </div>
                 <div class="problem-image">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9d885d4f-88ba-4613-9eb6-7967d987af6c.png" alt="Comparativo visual mostrando a redução dramática de uma geleira ao longo de décadas devido às mudanças climáticas" />
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9d885d4f-88ba-4613-9eb6-7967d987af6c.png" alt="Comparativo visual mostrando a redução dramática de uma geleira ao longo de décadas devido às mudanças climáticas">
                     <p>Redução da geleira Aletsch nos Alpes suíços entre 1920 e 2020</p>
                 </div>
             </div>
@@ -143,7 +155,7 @@
                         <i class="fas fa-book-open"></i>
                     </div>
                     <h3>Perda de Ecossistemas</h3>
-                    <p>Espécies adaptadas a ambientes glaciais enfrentam extinção, e ecossistemas únicos estão desaparecendo.</p>
+                    <p>Espécies adaptadas a ambientes glaciais enfrentam extinção, và ecossistemas únicos estão desaparecendo.</p>
                 </div>
             </div>
         </div>
@@ -172,19 +184,19 @@
                 
                 <div class="project-gallery">
                     <div class="project-gallery-item">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c0115f63-18a2-4851-8636-1149a4e8d0b0.png" alt="Estudantes apresentando maquete de sistema de captação de água pluvial com materiais reciclados" />
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c0115f63-18a2-4851-8636-1149a4e8d0b0.png" alt="Estudantes apresentando maquete de sistema de captação de água pluvial com materiais reciclados">
                         <p>Maquete do sistema de captação de água da chuva</p>
                     </div>
                     <div class="project-gallery-item">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9cce2793-f677-4653-ba3d-4ef7fe3e038f.png" alt="Alunos mediram o consumo de água na escola e criaram gráficos mostrando a redução após implementação de medidas de economia" />
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9cce2793-f677-4653-ba3d-4ef7fe3e038f.png" alt="Alunos mediram o consumo de água na escola e criaram gráficos mostrando a redução após implementação de medidas de economia">
                         <p>Gráficos de redução do consumo de água</p>
                     </div>
                     <div class="project-gallery-item">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0ea2c25f-81a1-488f-896c-ac6863b55cb7.png" alt="Cartazes educativos criados pelos alunos sobre a importância da preservação das geleiras e da água doce" />
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0ea2c25f-81a1-488f-896c-ac6863b55cb7.png" alt="Cartazes educativos criados pelos alunos sobre a importância da preservação das geleiras e da água doce">
                         <p>Materiais educativos produzidos</p>
                     </div>
                     <div class="project-gallery-item">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e5382f79-e376-49ea-9a2a-0184231e91ab.png" alt="Horta comunitária da escola sendo irrigada com água coletada da chuva, demonstrando prática sustentável" />
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e5382f79-e376-49ea-9a2a-0184231e91ab.png" alt="Horta comunitária da escola sendo irrigada com água coletada da chuva, demonstrando prática sustentável">
                         <p>Horta comunitária com água reutilizada</p>
                     </div>
                 </div>
@@ -249,6 +261,60 @@
         </div>
     </section>
 
+    <!-- Quiz Section -->
+    <section id="quiz" class="quiz">
+        <div class="container">
+            <div class="section-title">
+                <h2>Teste Seu Conhecimento</h2>
+                <p>Responda ao quiz e descubra o quanto você sabe sobre preservação da água doce</p>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <div class="quiz-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <span id="progressText">Pergunta 1 de 5</span>
+                    </div>
+                    <div class="quiz-score">
+                        <span>Pontuação: <span id="score">0</span>/5</span>
+                    </div>
+                </div>
+
+                <div class="quiz-content">
+                    <div class="question-container fade-in" id="questionContainer">
+                        <h3 id="question">Pergunta aparecerá aqui</h3>
+                        <div class="options-container" id="optionsContainer">
+                            <!-- Opções serão inseridas aqui pelo JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="explanation-container fade-in" id="explanationContainer" style="display: none;">
+                        <div class="explanation-content">
+                            <i class="fas fa-check-circle correct-icon" id="resultIcon"></i>
+                            <div>
+                                <h4 id="resultText">Resposta Correta!</h4>
+                                <p id="explanationText">Explicação aparecerá aqui</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" id="nextButton">Próxima Pergunta</button>
+                    </div>
+
+                    <div class="quiz-results fade-in" id="quizResults" style="display: none;">
+                        <div class="results-content">
+                            <i class="fas fa-trophy results-icon"></i>
+                            <h3>Quiz Concluído!</h3>
+                            <p id="finalScore">Sua pontuação: 0/5</p>
+                            <p id="scoreMessage" class="score-message"></p>
+                            <button class="btn btn-primary" id="restartButton">Fazer Quiz Novamente</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Call to Action -->
     <section id="action" class="cta">
         <div class="container">
@@ -265,7 +331,7 @@
                     <p>Local: Escola Municipal Natureza Viva - Sala 12, Bloco B</p>
                 </div>
                 
-                <a href="#" class="cta-btn">Confirmar Presença</a>
+                <button class="cta-btn" id="confirmPresence">Confirmar Presença</button>
             </div>
         </div>
     </section>
