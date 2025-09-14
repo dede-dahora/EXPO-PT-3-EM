@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize animations on page load
     setTimeout(checkScroll, 100);
 
-    // Quiz functionality
+    // Quiz functionality with 5 questions
     const quizData = [
         {
             question: "Qual percentual da água do planeta é doce e acessível para consumo humano?",
@@ -120,58 +120,170 @@ document.addEventListener('DOMContentLoaded', function() {
             ],
             correct: 0,
             explanation: "Mais de 2 bilhões de pessoas vivem em países com estresse hídrico elevado, enfrentando dificuldades para acessar água potável suficiente."
+        },
+        {
+            question: "Qual é o impacto do derretimento das geleiras no nível do mar?",
+            options: [
+                "Redução do nível do mar",
+                "Elevação do nível do mar",
+                "Nenhum impacto",
+                "Aumento da salinidade dos rios"
+            ],
+            correct: 1,
+            explanation: "O derretimento das geleiras contribui significativamente para a elevação do nível dos oceanos, ameaçando comunidades costeiras."
+        },
+        {
+            question: "Qual ação ajuda a preservar as geleiras?",
+            options: [
+                "Reduzir a pegada de carbono",
+                "Aumentar o uso de combustíveis fósseis",
+                "Desmatar áreas próximas",
+                "Construir barragens em rios glaciais"
+            ],
+            correct: 0,
+            explanation: "Reduzir a pegada de carbono diminui a emissão de gases de efeito estufa, ajudando a conter o aquecimento global e a preservação das geleiras."
         }
     ];
 
-    const quizContainer = document.getElementById('quiz');
-    const resultContainer = document.getElementById('result');
-    const submitButton = document.getElementById('submitQuiz');
+    const questionContainer = document.getElementById('questionContainer');
+    const questionEl = document.getElementById('question');
+    const optionsContainer = document.getElementById('optionsContainer');
+    const explanationContainer = document.getElementById('explanationContainer');
+    const resultIcon = document.getElementById('resultIcon');
+    const resultText = document.getElementById('resultText');
+    const explanationText = document.getElementById('explanationText');
+    const nextButton = document.getElementById('nextButton');
+    const quizResults = document.getElementById('quizResults');
+    const finalScore = document.getElementById('finalScore');
+    const scoreMessage = document.getElementById('scoreMessage');
+    const restartButton = document.getElementById('restartButton');
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
+    const scoreDisplay = document.getElementById('score');
 
-    function loadQuiz() {
-        quizData.forEach((item, index) => {
-            const div = document.createElement('div');
-            div.classList.add('quiz-item');
-            div.innerHTML = `
-                <p>${item.question}</p>
-                <ul>
-                    ${item.options.map((option, i) => `
-                        <li>
-                            <label>
-                                <input type="radio" name="question${index}" value="${i}">
-                                ${option}
-                            </label>
-                        </li>
-                    `).join('')}
-                </ul>
-                <p class="explanation" style="display:none;">${item.explanation}</p>
-            `;
-            quizContainer.appendChild(div);
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
+
+    function loadQuestion() {
+        answered = false;
+        explanationContainer.style.display = 'none';
+        questionContainer.style.display = 'block';
+        quizResults.style.display = 'none';
+
+        const currentData = quizData[currentQuestion];
+        questionEl.textContent = currentData.question;
+        optionsContainer.innerHTML = '';
+
+        currentData.options.forEach((option, index) => {
+            const optionDiv = document.createElement('div');
+            optionDiv.classList.add('option');
+            optionDiv.textContent = option;
+            optionDiv.dataset.index = index;
+            optionDiv.tabIndex = 0;
+
+            optionDiv.addEventListener('click', () => selectOption(index));
+            optionDiv.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    selectOption(index);
+                }
+            });
+
+            optionsContainer.appendChild(optionDiv);
         });
+
+        // Atualiza barra de progresso e texto
+        const progressPercent = ((currentQuestion) / quizData.length) * 100;
+        progressFill.style.width = `${progressPercent}%`;
+        progressText.textContent = `Pergunta ${currentQuestion + 1} de ${quizData.length}`;
+        scoreDisplay.textContent = score;
     }
+
+    function selectOption(selectedIndex) {
+        if (answered) return;
+        answered = true;
+
+        const currentData = quizData[currentQuestion];
+        const options = optionsContainer.querySelectorAll('.option');
+
+        options.forEach((optionEl, index) => {
+            optionEl.classList.remove('correct', 'incorrect');
+            optionEl.style.pointerEvents = 'none'; // desabilita clique após resposta
+            if (index === currentData.correct) {
+                optionEl.classList.add('correct');
+            }
+            if (index === selectedIndex && selectedIndex !== currentData.correct) {
+                optionEl.classList.add('incorrect');
+            }
+        });
+
+        if (selectedIndex === currentData.correct) {
+            score++;
+            resultIcon.className = 'fas fa-check-circle correct-icon';
+            resultText.textContent = 'Resposta Correta!';
+        } else {
+            resultIcon.className = 'fas fa-times-circle correct-icon';
+            resultText.textContent = 'Resposta Incorreta!';
+        }
+
+        explanationText.textContent = currentData.explanation;
+        explanationContainer.style.display = 'block';
+        scoreDisplay.textContent = score;
+    }
+
+    nextButton.addEventListener('click', () => {
+        currentQuestion++;
+        if (currentQuestion < quizData.length) {
+            loadQuestion();
+        } else {
+            showResults();
+        }
+    });
 
     function showResults() {
-        let score = 0;
-        const total = quizData.length;
-        quizData.forEach((item, index) => {
-            const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
-            if (selectedOption && parseInt(selectedOption.value) === item.correct) {
-                score++;
-            }
-        });
-        resultContainer.innerHTML = `Você acertou ${score} de ${total} perguntas.`;
-        resultContainer.style.display = 'block';
-        const explanations = document.querySelectorAll('.explanation');
-        explanations.forEach((explanation, index) => {
-            const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
-            if (selectedOption && parseInt(selectedOption.value) !== quizData[index].correct) {
-                explanation.style.display = 'block';
-            } else {
-                explanation.style.display = 'none';
-            }
-        });
+        questionContainer.style.display = 'none';
+        explanationContainer.style.display = 'none';
+        quizResults.style.display = 'block';
+
+        finalScore.textContent = `Sua pontuação: ${score} / ${quizData.length}`;
+
+        let message = '';
+        const percent = (score / quizData.length) * 100;
+        if (percent === 100) {
+            message = 'Parabéns! Você é um expert em preservação da água doce!';
+        } else if (percent >= 60) {
+            message = 'Muito bom! Continue aprendendo e ajudando a preservar.';
+        } else {
+            message = 'Continue estudando para melhorar seu conhecimento.';
+        }
+        scoreMessage.textContent = message;
+
+        // Atualiza barra de progresso para 100%
+        progressFill.style.width = '100%';
+        progressText.textContent = `Quiz concluído`;
+        scoreDisplay.textContent = score;
     }
 
-    loadQuiz();
+    restartButton.addEventListener('click', () => {
+        currentQuestion = 0;
+        score = 0;
+        loadQuestion();
+    });
 
-    submitButton.addEventListener('click', showResults);
+    loadQuestion();
+
+    // Função para o botão "Confirmar Presença"
+    const confirmBtn = document.getElementById('confirmPresence');
+    const confirmationBox = document.getElementById('confirmation-box');
+
+    confirmBtn.addEventListener('click', () => {
+        // Mostrar caixa de confirmação
+        confirmationBox.classList.add('show');
+
+        // Esconder após 3 segundos
+        setTimeout(() => {
+            confirmationBox.classList.remove('show');
+        }, 3000);
+    });
 });
