@@ -1,3 +1,14 @@
+/* Neve animada - canvas fundo */
+#snow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    display: block;
+}
 :root {
     --primary-blue: #0077B6;
     --secondary-blue: #00B4D8;

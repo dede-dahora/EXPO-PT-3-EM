@@ -286,4 +286,78 @@ document.addEventListener('DOMContentLoaded', function() {
             confirmationBox.classList.remove('show');
         }, 3000);
     });
+
+    // Neve animada no fundo
+    const snowCanvas = document.getElementById('snow');
+    if (snowCanvas) {
+        const ctx = snowCanvas.getContext('2d');
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        snowCanvas.width = width;
+        snowCanvas.height = height;
+
+        function resizeSnowCanvas() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            snowCanvas.width = width;
+            snowCanvas.height = height;
+        }
+        window.addEventListener('resize', resizeSnowCanvas);
+
+        // Configuração dos flocos
+        const snowflakes = [];
+        const snowflakeCount = Math.floor(width / 10) + 40;
+
+        function randomBetween(a, b) {
+            return Math.random() * (b - a) + a;
+        }
+
+        for (let i = 0; i < snowflakeCount; i++) {
+            snowflakes.push({
+                x: randomBetween(0, width),
+                y: randomBetween(0, height),
+                r: randomBetween(1.5, 4.5),
+                d: randomBetween(0.5, 1.5),
+                speed: randomBetween(0.5, 2.5),
+                angle: randomBetween(0, Math.PI * 2)
+            });
+        }
+
+        function drawSnowflakes() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.save();
+            ctx.globalAlpha = 0.8;
+            ctx.fillStyle = '#fff';
+            snowflakes.forEach(flake => {
+                ctx.beginPath();
+                ctx.arc(flake.x, flake.y, flake.r, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            ctx.restore();
+        }
+
+        function updateSnowflakes() {
+            snowflakes.forEach(flake => {
+                flake.y += flake.speed * flake.d;
+                flake.x += Math.sin(flake.angle) * 0.7;
+                flake.angle += 0.01 * flake.d;
+                if (flake.y > height + flake.r) {
+                    flake.y = -flake.r;
+                    flake.x = randomBetween(0, width);
+                }
+                if (flake.x > width + flake.r) {
+                    flake.x = -flake.r;
+                } else if (flake.x < -flake.r) {
+                    flake.x = width + flake.r;
+                }
+            });
+        }
+
+        function animateSnow() {
+            updateSnowflakes();
+            drawSnowflakes();
+            requestAnimationFrame(animateSnow);
+        }
+        animateSnow();
+    }
 });
