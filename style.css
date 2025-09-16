@@ -1157,3 +1157,51 @@ footer {
     .solution-item:nth-child(2) { transition-delay: 0.2s; }
     .solution-item:nth-child(3) { transition-delay: 0.3s; }
 }
+/* Responsáveis Section */
+.responsaveis {
+    background: var(--white);
+    padding: 60px 0;
+}
+
+.responsaveis-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.responsavel-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 180px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    cursor: default;
+}
+
+.responsavel-item:hover {
+    transform: translateY(-8px);
+}
+
+.responsavel-item img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 15px;
+    border: 4px solid var(--primary-blue);
+    transition: box-shadow 0.3s ease;
+}
+
+.responsavel-item img:hover {
+    box-shadow: 0 0 15px var(--secondary-blue);
+}
+
+.responsavel-item p {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
