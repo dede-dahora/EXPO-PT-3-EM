@@ -281,6 +281,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Mostrar caixa de confirmação
         confirmationBox.classList.add('show');
 
+        // Abrir link do formulário em nova aba
+        window.open('https://docs.google.com/forms/d/e/1FAIpQLSfRpvdOBxF-MW9BYIsaELgPjOp6fcZlYzwVJyGC00Wpbz7kMg/viewform?usp=dialog', '_blank');
+
         // Esconder após 3 segundos
         setTimeout(() => {
             confirmationBox.classList.remove('show');
