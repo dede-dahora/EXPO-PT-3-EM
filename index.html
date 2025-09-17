@@ -6,6 +6,8 @@
     <title>3º Ensino Médio - Redução de água doce no mundo e seus impactos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
 </head>
 <body>
     <!-- Canvas de neve animada -->
@@ -31,12 +33,13 @@
                 </div>
 
                 <nav class="desktop-nav">
-                    <a href="#problem">O Problema</a>
-                    <a href="#solutions">Soluções</a>
-                    <a href="#class-project">Nosso Projeto</a>
-                    <a href="#quiz">Teste Seu Conhecimento</a>
-                    <a href="#action">Tome Ação</a>
-                    <a href="#responsaveis">Responsáveis</a>
+                <a href="#problem">O Problema</a>
+                <a href="#solutions">Soluções</a>
+                <a href="#class-project">Nosso Projeto</a>
+                <a href="#quiz">Teste Seu Conhecimento</a>
+                <a href="#action">Tome Ação</a>
+                <a href="#responsaveis">Responsáveis</a>
+                <a href="#galeria">Galeria</a>
                 </nav>
             </div>
 
@@ -44,6 +47,11 @@
                 <i class="fas fa-home"></i>
                 Site Principal
             </a>
+
+            <!-- Botão de alternância de tema -->
+            <button id="themeToggleBtn" class="theme-toggle" aria-label="Alternar tema claro/escuro">
+                <i class="fas fa-moon"></i>
+            </button>
 
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
@@ -57,6 +65,7 @@
             <a href="#quiz">Teste Seu Conhecimento</a>
             <a href="#action">Tome Ação</a>
             <a href="#responsaveis">Responsáveis</a>
+            <a href="#galeria">Galeria</a>
             <a href="#" class="main-site-link">
                 <i class="fas fa-home"></i>
                 Site Principal
@@ -185,25 +194,66 @@
                         <p>Sábado, 20 de setembro</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="project-gallery">
-                    <div class="project-gallery-item">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTOFV-ydKWHXYHvVluOvjlHFH8BmSIq1pdQ&s" alt="Estudantes apresentando maquete de sistema de captação de água pluvial com materiais reciclados" />
-                        <p>Maquete do sistema de captação de água da chuva</p>
+    <!-- Galeria Section -->
+
+    <!-- Galeria Section -->
+    <section id="galeria" class="galeria">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galeria de Fotos do Projeto</h2>
+                <p>Veja alguns registros do nosso trabalho e apresentação!</p>
+            </div>
+            <div id="carouselGaleria" class="carousel slide fotos-carousel mx-auto" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="fotos/maquete.jpg" class="d-block w-100" alt="Estudantes apresentando maquete de sistema de captação de água pluvial com materiais reciclados">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>Maquete do sistema de captação de água da chuva</p>
+                        </div>
+                        <div class="carousel-caption-below">
+                            <p>Maquete do sistema de captação de água da chuva</p>
+                        </div>
                     </div>
-                    <div class="project-gallery-item">
-                        <img src="https://files.passeidireto.com/491b83c0-625a-483a-a15e-0a1346fecd6b/bg1.png" alt="Alunos mediram o consumo de água na escola e criaram gráficos mostrando a redução após implementação de medidas de economia" />
-                        <p>Gráficos de redução de água doce no Planeta Terra</p>
+                    <div class="carousel-item">
+                        <img src="https://cdn.discordapp.com/attachments/1417620703401742566/1417621649531994142/IMG-20250916-WA0286.jpg?ex=68cb268b&is=68c9d50b&hm=556e7949d26d0f9e303f79a66ed1c891d7ef58d3e3b702702324682c5e709356&" class="d-block w-100" alt="Estudantes apresentando maquete de sistema de captação de água pluvial com materiais reciclados">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>Gráficos de redução de água doce no Planeta Terra</p>
+                        </div>
+                        <div class="carousel-caption-below">
+                            <p>Gráficos de redução de água doce no Planeta Terra</p>
+                        </div>
                     </div>
-                    <div class="project-gallery-item">
-                        <img src="https://cdn.discordapp.com/attachments/1417620703401742566/1417621649531994142/IMG-20250916-WA0286.jpg?ex=68cb268b&is=68c9d50b&hm=556e7949d26d0f9e303f79a66ed1c891d7ef58d3e3b702702324682c5e709356&" alt="Cartazes educativos criados pelos alunos sobre a importância da preservação das geleiras e da água doce" />
-                        <p>Alunos trabalhando no Projeto</p>
+                    <div class="carousel-item">
+                        <img src="https://cdn.discordapp.com/attachments/1417620703401742566/1417651595956453407/image.png?ex=68cb426f&is=68c9f0ef&hm=275a197bf2134900cb55fadfad2feeaa49c7e6b70bddb07e28bcd128852d8178&" class="d-block w-100" alt="Estudantes apresentando maquete de sistema de captação de água pluvial com materiais reciclados">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>Alunos trabalhando no Projeto</p>
+                        </div>
+                        <div class="carousel-caption-below">
+                            <p>Alunos trabalhando no Projeto</p>
+                        </div>
                     </div>
-                    <div class="project-gallery-item">
-                        <img src="https://cdn.discordapp.com/attachments/1417620703401742566/1417651595956453407/image.png?ex=68cb426f&is=68c9f0ef&hm=275a197bf2134900cb55fadfad2feeaa49c7e6b70bddb07e28bcd128852d8178&" alt="Horta comunitária da escola sendo irrigada com água coletada da chuva, demonstrando prática sustentável" />
-                        <p>Foto da Turma</p>
+                    <div class="carousel-item">
+                        <img src="https://s3.static.brasilescola.uol.com.br/img/2015/02/distribuicao-da-agua.jpg" class="d-block w-100" alt="Alunos mediram o consumo de água na escola e criaram gráficos mostrando a redução após implementação de medidas de economia">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>Foto da Turma</p>
+                        </div>
+                        <div class="carousel-caption-below">
+                            <p>Foto da Turma</p>
+                        </div>
                     </div>
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselGaleria" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselGaleria" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Próxima</span>
+                </button>
             </div>
         </div>
     </section>
@@ -392,5 +442,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
 </body>
 </html>

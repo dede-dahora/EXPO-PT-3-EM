@@ -326,11 +326,16 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
+        function getSnowColor() {
+            const cssColor = getComputedStyle(document.documentElement).getPropertyValue('--snow-rgb') || '255,255,255';
+            return `rgb(${cssColor.trim()})`;
+        }
+
         function drawSnowflakes() {
             ctx.clearRect(0, 0, width, height);
             ctx.save();
-            ctx.globalAlpha = 0.8;
-            ctx.fillStyle = '#fff';
+            ctx.globalAlpha = 0.85;
+            ctx.fillStyle = getSnowColor();
             snowflakes.forEach(flake => {
                 ctx.beginPath();
                 ctx.arc(flake.x, flake.y, flake.r, 0, Math.PI * 2);
@@ -363,4 +368,39 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         animateSnow();
     }
+
+    // Tema claro/escuro com persistência
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const rootEl = document.documentElement;
+
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            document.body.classList.add('dark-theme');
+            themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            localStorage.setItem('preferredTheme', 'dark');
+        } else {
+            document.body.classList.remove('dark-theme');
+            themeToggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+            localStorage.setItem('preferredTheme', 'light');
+        }
+        // redesenha a neve (se existir) para refletir a nova cor
+        if (typeof drawSnowflakes === 'function') {
+            drawSnowflakes();
+        }
+    }
+
+    // Carrega preferência ao iniciar
+    const savedTheme = localStorage.getItem('preferredTheme');
+    if (savedTheme) {
+        applyTheme(savedTheme);
+    } else {
+        // Detecta preferência do sistema
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        applyTheme(prefersDark ? 'dark' : 'light');
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+        const isDark = document.body.classList.contains('dark-theme');
+        applyTheme(isDark ? 'light' : 'dark');
+    });
 });
