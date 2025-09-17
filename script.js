@@ -389,15 +389,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Carrega preferência ao iniciar
-    const savedTheme = localStorage.getItem('preferredTheme');
-    if (savedTheme) {
-        applyTheme(savedTheme);
-    } else {
-        // Detecta preferência do sistema
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        applyTheme(prefersDark ? 'dark' : 'light');
-    }
+    // Sempre inicia no modo claro
+    applyTheme('light');
 
     themeToggleBtn.addEventListener('click', () => {
         const isDark = document.body.classList.contains('dark-theme');
