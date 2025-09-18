@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', function() {
         confirmationBox.classList.add('show');
 
         // Abrir link do formulário em nova aba
-        window.open('https://docs.google.com/forms/d/e/1FAIpQLSfRpvdOBxF-MW9BYIsaELgPjOp6fcZlYzwVJyGC00Wpbz7kMg/viewform?usp=dialog', '_blank');
+        window.open('https://docs.google.com/forms/d/e/1FAIpQLScHH5soGd4gfaoHrIyNE_NfDwZ4479shxxtCDI5bc2KO95fYQ/viewform?usp=header');
 
         // Esconder após 3 segundos
         setTimeout(() => {
